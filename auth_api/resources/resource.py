@@ -4,7 +4,7 @@ from models.model import UserModel, RevokedTokenModel
 import requests
 from flask import jsonify, request
 from pycpfcnpj import cpfcnpj, compatible
-from configs.config import ROUTER_URL
+from configs.config import HOST_NAME, PORT
 
 
 parser = reqparse.RequestParser()
@@ -50,7 +50,7 @@ class Base2(Resource):
         cpf = request.args.get("cpf")
         if not cpfcnpj.validate(cpf):
             return {'message': f"invalid cpf"}
-        r = requests.get(f'{ROUTER_URL}/base_2?cpf={compatible.clear_punctuation(cpf)}').json()
+        r = requests.get(f'http://{HOST_NAME}{PORT}/base_2?cpf={compatible.clear_punctuation(cpf)}').json()
         if not r:
             return {'message': f"cpf {cpf} doesn\'t exist"}
         return jsonify(r)

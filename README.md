@@ -14,7 +14,12 @@ POST http://127.0.0.1:5000/registration {username:name, password:pass}
 //Será gerado um token de acesso
 ```
 ``` bash
+POST http://127.0.0.1:5000/login {username:name, password:pass}
+//Será retornado um token de acesso e um token de refresh
+```
+``` bash
 GET http://127.0.0.1:5000/base2?cpf=XXXXXXXXX
+Header Bearer TOKEN
 // É retornado as informações do CPF
 ```
 

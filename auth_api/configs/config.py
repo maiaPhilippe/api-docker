@@ -1,3 +1,4 @@
 import os
 
-ROUTER_URL = os.getenv("ROUTER_URL", "0.0.0.0/5000")
+PORT = os.getenv("PORT", ":3000")
+HOST_NAME = os.getenv("HOST_NAME", "web2")
